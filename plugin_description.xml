@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<library path="lib/librviz_odom_trail_plugin">
+
+  <class name="rviz_odom_trail_plugin/OdomTrail" 
+         type="rviz_odom_trail_plugin::OdomTrailDisplay" 
+         base_class_type="rviz::Display">
+    <description>
+      An RViz display plugin that visualizes odometry trails with a sphere and text.
+    </description>
+  </class>
+
+  <!-- <message_type>nav_msgs/Odom</message_type> -->
+
+</library>
