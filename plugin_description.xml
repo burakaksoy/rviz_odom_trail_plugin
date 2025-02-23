@@ -9,6 +9,6 @@
     </description>
   </class>
 
-  <!-- <message_type>nav_msgs/Odom</message_type> -->
+  <message_type>nav_msgs/Odom</message_type>
 
 </library>

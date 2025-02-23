@@ -4,10 +4,11 @@
 // #define RVIZ_ODOM_TRAIL_PLUGIN_ODOM_TRAIL_DISPLAY_H
 
 #ifndef Q_MOC_RUN
-// #include <OGRE/OgreSceneNode.h>
-// #include <OGRE/OgreSceneManager.h>
-#include <OgreSceneNode.h>
-#include <OgreSceneManager.h>
+#include <OGRE/OgreSceneNode.h>
+#include <OGRE/OgreSceneManager.h>
+#include <OGRE/OgreManualObject.h>
+// #include <OgreSceneNode.h>
+// #include <OgreSceneManager.h>
 
 // #include <tf/transform_listener.h>
 
@@ -15,20 +16,24 @@
 #include <rviz/properties/float_property.h>
 #include <rviz/properties/int_property.h>
 #include <rviz/properties/bool_property.h>
+#include <rviz/properties/vector_property.h> 
 
 // #include <rviz/visualization_manager.h>
 // #include <rviz/frame_manager.h>
 
 #include <rviz/ogre_helpers/billboard_line.h>
+#include <rviz/ogre_helpers/movable_text.h>
 #include <rviz/ogre_helpers/shape.h>
 
 #include <rviz/message_filter_display.h>
 #include <nav_msgs/Odometry.h>
 
-#endif
-
 #include <vector>
+#include <string>
+#include <iostream>
+#include <ros/ros.h>
 
+#endif
 
 // Forward declarations to reduce compile time
 namespace rviz
@@ -83,6 +88,7 @@ private Q_SLOTS:
    */
   void updateLine();
   void updateSphere();
+  void updateText();
 
 private:
   // Trail (line) properties
@@ -98,6 +104,16 @@ private:
   rviz::FloatProperty* sphere_alpha_property_;
   rviz::FloatProperty* sphere_scale_property_;
 
+  // --------------------------------------------------------
+  // 3D Text Properties
+  // --------------------------------------------------------
+  rviz::BoolProperty*   show_text_property_;   ///< Enable/disable text display
+  rviz::StringProperty* text_string_property_; ///< Actual text string
+  rviz::ColorProperty*  text_color_property_;  ///< (R,G,B)
+  rviz::FloatProperty*  text_alpha_property_;  ///< alpha
+  rviz::FloatProperty*  text_scale_property_;  ///< character height
+  rviz::VectorProperty* text_offset_property_; ///< offset from last point
+
   // Internal data structures
   std::vector<Ogre::Vector3> path_points_;
   rviz::BillboardLine* trail_;   ///< Helper class for rendering a polyline
@@ -105,6 +121,12 @@ private:
 
   Ogre::Vector3 last_point_;
   bool          have_last_point_;
+
+  // --------------------------------------------------------
+  // 3D Text Rendering
+  // --------------------------------------------------------
+  Ogre::SceneNode*      text_node_;
+  rviz::MovableText*    text_object_;
 };
 
 }  // end namespace rviz_odom_trail_plugin

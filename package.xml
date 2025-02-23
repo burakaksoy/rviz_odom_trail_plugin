@@ -51,19 +51,19 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>roscpp</build_depend>
-  <!-- <build_depend>roslib</build_depend> -->
+  <build_depend>roslib</build_depend>
   <build_depend>rviz</build_depend>
-  <!-- <build_depend>pluginlib</build_depend> -->
+  <build_depend>pluginlib</build_depend>
   <build_depend>nav_msgs</build_depend>
   
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rviz</build_export_depend>
-  <!-- <build_export_depend>pluginlib</build_export_depend> -->
+  <build_export_depend>pluginlib</build_export_depend>
   <build_export_depend>nav_msgs</build_export_depend>
   
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rviz</exec_depend>
-  <!-- <exec_depend>pluginlib</exec_depend> -->
+  <exec_depend>pluginlib</exec_depend>
   <exec_depend>nav_msgs</exec_depend>
 
 
